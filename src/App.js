@@ -79,6 +79,12 @@ class App extends React.Component {
 				contrato,
 				conta,
 			})
+
+			/* Quando alterar uma conta no MetaMask mudar o estado */
+			window.ethereum.on('accountsChanged', (accounts) => {
+				this.setState({conta: accounts[0]})
+			})
+
 		}else{
 			alert('Contrato não está implementado!')
 		}
